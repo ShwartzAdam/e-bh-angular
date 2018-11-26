@@ -1,71 +1,61 @@
 import {Injectable} from '@angular/core';
 
-
 import data from './../data/files.json';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService{
+export class StorageService {
   fileTree = [];
   constructor() { }
 
-  public getDataTree(){
+  public getFlatJson(){
     return data;
   }
   initLocalStorage(): Promise<any> {
-      return new Promise((resolve,reject) => {
-        if(this.sortData()) {
-          resolve(this.fileTree);
-        }
-        reject(null);
+      return new Promise((resolve) => {
+        var tree = this.listToTree(data, {
+          idKey: 'id',
+          parentKey: 'parentFileId',
+          childrenKey: 'children'
+        });
+        resolve(tree);
       });
   }
-  private sortData(): boolean {
-    for(let i = 0 ; i < data.length ; i++ ){
-      // if you are folder...
-      if( data[i]['fileTypeId'] === 1 && data[i]['parentFileId'] === null ){
-        // seek for files to create object
-        this.attachFilesToFolder(data[i]['id'],data[i]['name']);
+
+  listToTree(data, options) {
+    options = options || {};
+    let ID_KEY = options.idKey || 'id';
+    let PARENT_KEY = options.parentKey || 'parent';
+    let CHILDREN_KEY = options.childrenKey || 'children';
+
+    let tree = [],
+      childrenOf = {};
+    let item, id, parentId;
+
+    for (let i = 0, length = data.length; i < length; i++) {
+      item = data[i];
+      id = item[ID_KEY];
+      parentId = item[PARENT_KEY] || 0;
+      // every item may have children
+      childrenOf[id] = childrenOf[id] || [];
+      // init its children
+      item[CHILDREN_KEY] = childrenOf[id];
+      if (parentId != 0) {
+        // init its parent's children object
+        childrenOf[parentId] = childrenOf[parentId] || [];
+        // push it into its parent's children object
+        childrenOf[parentId].push(item);
+      } else {
+        tree.push(item);
       }
-    }
-    // now go trough all folders and check weather it has a parent
-    // naive soultion ----> it was a long night
-    // filter only folders with parents id
-    // let folders = data.filter(f => f['parentFileId'] !== null && f['fileTypeId'] === 1);
-    // console.log(folders);
-    // console.log(this.fileTree);
-    // for (let k = 0 ; k < folders.length ; k++ ){
-    //   for (let j = 0 ; j < this.fileTree.length ; j++ ){
-    //       if(folders[k]['parentFileId'] === this.fileTree[])
-    //   }
-    // }
-    return true;
-  }
-  private attachFilesToFolder(folderId,folderName): void {
-    // init obj for folder with array for his files
-    let folderObj = {
-      id: folderId,
-      name: folderName,
-      children : []
     };
-    // loop again.. yeah i know .. not the best practice
-    for(let j = 0 ; j < data.length ; j++ ) {
-      // if you are my childrens .. attach me to a new file object
-      if( data[j]['parentFileId'] === folderId) {
-        let file = {
-          id: data[j]['id'],
-          name: data[j]['name'],
-          children: []
-        };
-        // push me to children array
-        folderObj.children.push(file);
-      }
-    }
-    // add me to a clean tree
-    this.fileTree.push(folderObj);
+
+    return tree;
   }
+
 
 
 }

@@ -20,7 +20,7 @@ export class TreeComponent implements OnInit {
     actionMapping: {
       mouse: {
         click: (tree, node) => {
-          const data =this.storage.getDataTree();
+          const data = this.storage.getFlatJson();
           let f = data.filter(f => f['id'] === node.data['id']);
           this.filename = f[0]['name'];
           this.dateObj = f[0]['createdAt'];

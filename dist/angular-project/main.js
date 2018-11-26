@@ -168,7 +168,7 @@ module.exports = ".svg-file{\n  background: url(\"data:image/svg+xml,%3C%3Fxml v
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\n  <div class=\"form-group row\">\n    <label class=\"col-4\">File Type</label>\n    <div class=\"col-8\">\n      <label class=\"custom-control custom-radio\">\n        <input name=\"radio\" type=\"radio\" class=\"custom-control-input\" value=\"1\">\n        <span class=\"svg-folder\"></span>\n        <span class=\"custom-control-indicator\"></span>\n        <span class=\"custom-control-description\">Folder</span>\n      </label>\n      <label class=\"custom-control custom-radio\">\n        <input name=\"radio\" type=\"radio\" class=\"custom-control-input\" value=\"2\">\n        <span class=\"svg-file\"></span>\n        <span class=\"custom-control-indicator\"></span>\n        <span class=\"custom-control-description\">File</span>\n\n      </label>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"name\" class=\"col-4 col-form-label\">Name</label>\n    <div class=\"col-8\">\n      <input id=\"name\" name=\"name\" type=\"text\" class=\"form-control here\">\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"user\" class=\"col-4 col-form-label\">User</label>\n    <div class=\"col-8\">\n      <select id=\"user\" name=\"user\" class=\"custom-select\">\n        <option value=\"7\">7</option>\n        <option value=\"6\">6</option>\n        <option value=\"5\">5</option>\n        <option value=\"4\">4</option>\n        <option value=\"3\">3</option>\n        <option value=\"2\">2</option>\n        <option value=\"1\">1</option>\n        <option value=\"0\">0</option>\n      </select>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"group\" class=\"col-4 col-form-label\">Group</label>\n    <div class=\"col-8\">\n      <select id=\"group\" name=\"group\" class=\"custom-select\">\n        <option value=\"7\">7</option>\n        <option value=\"6\">6</option>\n        <option value=\"5\">5</option>\n        <option value=\"4\">4</option>\n        <option value=\"3\">3</option>\n        <option value=\"2\">2</option>\n        <option value=\"1\">1</option>\n        <option value=\"0\">0</option>\n      </select>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"other\" class=\"col-4 col-form-label\">other</label>\n    <div class=\"col-8\">\n      <select id=\"other\" name=\"other\" class=\"custom-select\">\n        <option value=\"7\">7</option>\n        <option value=\"6\">6</option>\n        <option value=\"5\">5</option>\n        <option value=\"4\">4</option>\n        <option value=\"3\">3</option>\n        <option value=\"2\">2</option>\n        <option value=\"1\">1</option>\n        <option value=\"0\">0</option>\n      </select>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <div class=\"offset-4 col-8\">\n      <button name=\"submit\" type=\"submit\" class=\"btn btn-primary\" onclick=\"submitData()\">Add</button>\n    </div>\n  </div>\n</form>\n"
+module.exports = "<form>\n  <div class=\"form-group row\">\n    <label class=\"col-4\">File Type</label>\n    <div class=\"col-8\">\n      <label class=\"custom-control custom-radio\">\n        <input name=\"radio\" type=\"radio\" class=\"custom-control-input\" value=\"1\">\n        <span class=\"svg-folder\"></span>\n        <span class=\"custom-control-indicator\"></span>\n        <span class=\"custom-control-description\">Folder</span>\n      </label>\n      <label class=\"custom-control custom-radio\">\n        <input name=\"radio\" type=\"radio\" class=\"custom-control-input\" value=\"2\">\n        <span class=\"svg-file\"></span>\n        <span class=\"custom-control-indicator\"></span>\n        <span class=\"custom-control-description\">File</span>\n\n      </label>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"name\" class=\"col-4 col-form-label\">Name</label>\n    <div class=\"col-8\">\n      <input id=\"name\" name=\"name\" type=\"text\" class=\"form-control here\">\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"user\" class=\"col-4 col-form-label\">User</label>\n    <div class=\"col-4\">\n      <select id=\"user\" name=\"user\" class=\"custom-select\">\n        <option value=\"7\">7</option>\n        <option value=\"6\">6</option>\n        <option value=\"5\">5</option>\n        <option value=\"4\">4</option>\n        <option value=\"3\">3</option>\n        <option value=\"2\">2</option>\n        <option value=\"1\">1</option>\n        <option value=\"0\">0</option>\n      </select>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"group\" class=\"col-4 col-form-label\">Group</label>\n    <div class=\"col-4\">\n      <select id=\"group\" name=\"group\" class=\"custom-select\">\n        <option value=\"7\">7</option>\n        <option value=\"6\">6</option>\n        <option value=\"5\">5</option>\n        <option value=\"4\">4</option>\n        <option value=\"3\">3</option>\n        <option value=\"2\">2</option>\n        <option value=\"1\">1</option>\n        <option value=\"0\">0</option>\n      </select>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <label for=\"other\" class=\"col-4 col-form-label\">Other</label>\n    <div class=\"col-4\">\n      <select id=\"other\" name=\"other\" class=\"custom-select\">\n        <option value=\"7\">7</option>\n        <option value=\"6\">6</option>\n        <option value=\"5\">5</option>\n        <option value=\"4\">4</option>\n        <option value=\"3\">3</option>\n        <option value=\"2\">2</option>\n        <option value=\"1\">1</option>\n        <option value=\"0\">0</option>\n      </select>\n    </div>\n  </div>\n  <div class=\"form-group row\">\n    <div class=\"offset-4 col-8\">\n      <button name=\"submit\" type=\"submit\" class=\"btn btn-primary\" onclick=\"submitData()\">Add</button>\n    </div>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -292,61 +292,47 @@ var StorageService = /** @class */ (function () {
     function StorageService() {
         this.fileTree = [];
     }
-    StorageService.prototype.getDataTree = function () {
+    StorageService.prototype.getFlatJson = function () {
         return _data_files_json__WEBPACK_IMPORTED_MODULE_1__;
     };
     StorageService.prototype.initLocalStorage = function () {
         var _this = this;
-        return new Promise(function (resolve, reject) {
-            if (_this.sortData()) {
-                resolve(_this.fileTree);
-            }
-            reject(null);
+        return new Promise(function (resolve) {
+            var tree = _this.listToTree(_data_files_json__WEBPACK_IMPORTED_MODULE_1__, {
+                idKey: 'id',
+                parentKey: 'parentFileId',
+                childrenKey: 'children'
+            });
+            resolve(tree);
         });
     };
-    StorageService.prototype.sortData = function () {
-        for (var i = 0; i < _data_files_json__WEBPACK_IMPORTED_MODULE_1__.length; i++) {
-            // if you are folder...
-            if (_data_files_json__WEBPACK_IMPORTED_MODULE_1__[i]['fileTypeId'] === 1 && _data_files_json__WEBPACK_IMPORTED_MODULE_1__[i]['parentFileId'] === null) {
-                // seek for files to create object
-                this.attachFilesToFolder(_data_files_json__WEBPACK_IMPORTED_MODULE_1__[i]['id'], _data_files_json__WEBPACK_IMPORTED_MODULE_1__[i]['name']);
+    StorageService.prototype.listToTree = function (data, options) {
+        options = options || {};
+        var ID_KEY = options.idKey || 'id';
+        var PARENT_KEY = options.parentKey || 'parent';
+        var CHILDREN_KEY = options.childrenKey || 'children';
+        var tree = [], childrenOf = {};
+        var item, id, parentId;
+        for (var i = 0, length_1 = data.length; i < length_1; i++) {
+            item = data[i];
+            id = item[ID_KEY];
+            parentId = item[PARENT_KEY] || 0;
+            // every item may have children
+            childrenOf[id] = childrenOf[id] || [];
+            // init its children
+            item[CHILDREN_KEY] = childrenOf[id];
+            if (parentId != 0) {
+                // init its parent's children object
+                childrenOf[parentId] = childrenOf[parentId] || [];
+                // push it into its parent's children object
+                childrenOf[parentId].push(item);
+            }
+            else {
+                tree.push(item);
             }
         }
-        // now go trough all folders and check weather it has a parent
-        // naive soultion ----> it was a long night
-        // filter only folders with parents id
-        // let folders = data.filter(f => f['parentFileId'] !== null && f['fileTypeId'] === 1);
-        // console.log(folders);
-        // console.log(this.fileTree);
-        // for (let k = 0 ; k < folders.length ; k++ ){
-        //   for (let j = 0 ; j < this.fileTree.length ; j++ ){
-        //       if(folders[k]['parentFileId'] === this.fileTree[])
-        //   }
-        // }
-        return true;
-    };
-    StorageService.prototype.attachFilesToFolder = function (folderId, folderName) {
-        // init obj for folder with array for his files
-        var folderObj = {
-            id: folderId,
-            name: folderName,
-            children: []
-        };
-        // loop again.. yeah i know .. not the best practice
-        for (var j = 0; j < _data_files_json__WEBPACK_IMPORTED_MODULE_1__.length; j++) {
-            // if you are my childrens .. attach me to a new file object
-            if (_data_files_json__WEBPACK_IMPORTED_MODULE_1__[j]['parentFileId'] === folderId) {
-                var file = {
-                    id: _data_files_json__WEBPACK_IMPORTED_MODULE_1__[j]['id'],
-                    name: _data_files_json__WEBPACK_IMPORTED_MODULE_1__[j]['name'],
-                    children: []
-                };
-                // push me to children array
-                folderObj.children.push(file);
-            }
-        }
-        // add me to a clean tree
-        this.fileTree.push(folderObj);
+        ;
+        return tree;
     };
     StorageService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -419,7 +405,7 @@ var TreeComponent = /** @class */ (function () {
             actionMapping: {
                 mouse: {
                     click: function (tree, node) {
-                        var data = _this.storage.getDataTree();
+                        var data = _this.storage.getFlatJson();
                         var f = data.filter(function (f) { return f['id'] === node.data['id']; });
                         _this.filename = f[0]['name'];
                         _this.dateObj = f[0]['createdAt'];
