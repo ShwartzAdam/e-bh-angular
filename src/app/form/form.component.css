@@ -1,0 +1,18 @@
+.svg-file{
+  background: url("../../assets/file-icon.svg") !important;
+  height:20px;
+  width:20px;
+  background-size: contain;
+  display: inline-block;
+  position: relative;
+  margin-right:5px;
+}
+.svg-folder{
+  background: url("../../assets/folder-icon.svg") !important;
+  height:20px;
+  width:20px;
+  background-size: contain;
+  display: inline-block;
+  position: relative;
+  margin-right:5px;
+}

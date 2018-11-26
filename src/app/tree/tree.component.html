@@ -1,0 +1,13 @@
+<tree-root [nodes]="node"
+           [options]="options">
+</tree-root>
+<p><strong>File Name: </strong> {{filename}}</p>
+<p>
+  <strong>User : </strong>{{chmod[0] | chmodPipe}}
+  <br>
+  <strong>Group: </strong>{{chmod[1] | chmodPipe}}
+  <br>
+  <strong>Other: </strong>{{chmod[2] | chmodPipe }}
+</p>
+<p><strong>Date Created: </strong>{{dateObj | date:'medium'}}</p>
+
